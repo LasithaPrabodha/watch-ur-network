@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@watch-ur-network/material": ["libs/material/src/index.ts"]
+      "@watch-ur-network/material": ["libs/material/src/index.ts"],
+      "@watch-ur-network/shared-ui": ["libs/shared-ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -8,19 +8,26 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/my-friends",
         "index": "apps/my-friends/src/index.html",
         "main": "apps/my-friends/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/my-friends/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/my-friends/src/favicon.ico",
           "apps/my-friends/src/assets"
         ],
-        "styles": ["apps/my-friends/src/styles.scss"],
+        "styles": [
+          "@angular/material/prebuilt-themes/pink-bluegrey.css",
+          "apps/my-friends/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
