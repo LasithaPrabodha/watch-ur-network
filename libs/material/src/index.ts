@@ -1,1 +1,1 @@
-export * from './lib/material/material.component';
+export * from './lib/common-material.module';
