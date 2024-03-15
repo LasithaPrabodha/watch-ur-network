@@ -1,0 +1,9 @@
+<ng-container *ngIf="friendsGraph$ | async as friendsGraph">
+  <ng-container *ngIf="friendsGraph.nodes.length > 0">
+    <wyn-force-directed-graph
+      [friendsGraph]="friendsGraph"
+      title="Friends Network"
+    >
+    </wyn-force-directed-graph>
+  </ng-container>
+</ng-container>

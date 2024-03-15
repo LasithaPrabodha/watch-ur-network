@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "watch-ur-network",
+            "prefix": "wyn",
             "style": "kebab-case"
           }
         ]
