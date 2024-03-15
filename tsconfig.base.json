@@ -15,8 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@watch-ur-network/material": ["libs/material/src/index.ts"],
-      "@watch-ur-network/shared-ui": ["libs/shared-ui/src/index.ts"]
+      "@wyn/material": ["libs/material/src/index.ts"],
+      "@wyn/ui-chart-cards": ["libs/ui-chart-cards/src/index.ts"],
+      "@wyn/ui-shared": ["libs/ui-shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

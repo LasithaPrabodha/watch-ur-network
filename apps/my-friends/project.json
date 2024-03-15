@@ -2,7 +2,7 @@
   "name": "my-friends",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "watch-ur-network",
+  "prefix": "wyn",
   "sourceRoot": "apps/my-friends/src",
   "tags": [],
   "targets": {
@@ -25,7 +25,7 @@
           "apps/my-friends/src/assets"
         ],
         "styles": [
-          "@angular/material/prebuilt-themes/pink-bluegrey.css",
+          "@angular/material/prebuilt-themes/deeppurple-amber.css",
           "apps/my-friends/src/styles.scss"
         ],
         "scripts": []
