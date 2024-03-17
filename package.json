@@ -7,7 +7,9 @@
     "format": "nx format:write",
     "format:write": "nx format:write",
     "format:check": "nx format:check",
-    "dep-graph": "nx dep-graph"
+    "dep-graph": "nx dep-graph",
+    "build": "nx run-many --targets=build --base-href https://lasithaprabodha.github.io/watch-ur-network/",
+    "build-and-deploy": "nx run-many --targets=build --base-href https://lasithaprabodha.github.io/watch-ur-network/ && npx angular-cli-ghpages -d dist/apps/my-friends/ --no-silent"
   },
   "private": true,
   "dependencies": {
@@ -74,6 +76,7 @@
     "@types/node": "18.16.9",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
+    "angular-cli-ghpages": "^2.0.0-beta.2",
     "cypress": "13.6.4",
     "eslint": "~8.48.0",
     "eslint-config-prettier": "^9.0.0",
