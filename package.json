@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx run",
+    "start": "nx run my-friends:serve:development",
     "format": "nx format:write",
     "format:write": "nx format:write",
     "format:check": "nx format:check",
