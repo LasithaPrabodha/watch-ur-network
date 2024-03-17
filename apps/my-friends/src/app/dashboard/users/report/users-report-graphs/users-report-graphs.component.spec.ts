@@ -2,10 +2,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UsersReportGraphsComponent } from './users-report-graphs.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { initialUsersState } from '../../../+state/users.reducer';
-import * as UsersActions from '../../../+state/users.actions';
+import { initialUsersState } from '../../+state/users.reducer';
+import * as UsersActions from '../../+state/users.actions';
 import { UserEntity } from '@wyn/ui-shared';
-import * as UsersSelectors from '../../../+state/users.selectors';
+import * as UsersSelectors from '../../+state/users.selectors';
 
 describe('UsersReportGraphsComponent', () => {
   let store: MockStore;
