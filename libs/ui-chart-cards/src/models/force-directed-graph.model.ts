@@ -4,10 +4,14 @@ export interface ForceDirectedGraph {
 }
 
 export interface ForceDirectedGraphLink {
-  source: string;
-  target: string;
+  source: ForceDirectedGraphLinkSource,
+  target: ForceDirectedGraphLinkTarget
 }
 
+export type ForceDirectedGraphLinkSource = string;
+
+export type ForceDirectedGraphLinkTarget = string;
+
 export interface ForceDirectedGraphNode {
-  value: string;
+  value: string
 }

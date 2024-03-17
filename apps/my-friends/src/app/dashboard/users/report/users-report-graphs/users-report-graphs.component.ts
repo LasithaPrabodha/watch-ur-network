@@ -1,11 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ForceDirectedGraph } from '@wyn/ui-chart-cards';
+import {
+  BubbleChartDataPoint,
+  ForceDirectedGraph,
+  HorizontalBarChartDataPoint,
+} from '@wyn/ui-chart-cards';
 import { takeUntil } from 'rxjs/operators';
 import { UserEntity } from '@wyn/ui-shared';
 import { Observable, Subject } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import * as UsersActions from '../../state/users.actions';
-import * as UsersSelectors from '../../state/users.selectors';
+import * as UsersActions from '../../+state/users.actions';
+import * as UsersSelectors from '../../+state/users.selectors';
 import { AppState } from '../../../../core/ngrx/app.state';
 
 @Component({
@@ -15,6 +19,9 @@ import { AppState } from '../../../../core/ngrx/app.state';
 })
 export class UsersReportGraphsComponent implements OnInit, OnDestroy {
   friendsGraph$: Observable<ForceDirectedGraph>;
+  userAgeResults!: HorizontalBarChartDataPoint[];
+  userWeightResults!: HorizontalBarChartDataPoint[];
+  ageWeightResults!: BubbleChartDataPoint[];
 
   private allUsers$: Observable<UserEntity[]>;
 
@@ -45,6 +52,32 @@ export class UsersReportGraphsComponent implements OnInit, OnDestroy {
   }
 
   private handleUsersChange(users: UserEntity[]): void {
+    // Convert users into results
+    this.userAgeResults = [];
+    this.userWeightResults = [];
+    this.ageWeightResults = [];
+    for (const user of users) {
+      this.userAgeResults.push({
+        name: user.name,
+        value: user.age,
+      });
+      this.userWeightResults.push({
+        name: user.name,
+        value: user.weight,
+      });
+      this.ageWeightResults.push({
+        name: user.name,
+        series: [
+          {
+            name: '',
+            x: user.age,
+            y: user.weight,
+            r: user.friendNames.length,
+          },
+        ],
+      });
+    }
+
     // Re-fetch the friendsGraph
     this.store.dispatch(UsersActions.fetchFriendsGraphFromUserReports());
   }

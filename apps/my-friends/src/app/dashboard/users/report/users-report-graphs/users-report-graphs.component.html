@@ -5,5 +5,28 @@
       title="Friends Network"
     >
     </wyn-force-directed-graph>
+    <wyn-horizontal-bar-chart-card
+      [results]="userAgeResults"
+      title="User Ages"
+      xAxisLabel="Age"
+      yAxisLabel="Name"
+    >
+    </wyn-horizontal-bar-chart-card>
+
+    <wyn-horizontal-bar-chart-card
+      [results]="userWeightResults"
+      title="User Weights"
+      xAxisLabel="Weight"
+      yAxisLabel="Name"
+    >
+    </wyn-horizontal-bar-chart-card>
+
+    <wyn-bubble-chart-card
+      [results]="ageWeightResults"
+      title="Age vs Weight (# Friends)"
+      xAxisLabel="Age"
+      yAxisLabel="Weight"
+    >
+    </wyn-bubble-chart-card>
   </ng-container>
 </ng-container>

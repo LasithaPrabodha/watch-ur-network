@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { UsersReportGraphsComponent } from './users/report/users-report-graphs/users-report-graphs.component';
 import { UsersReportUserFormComponent } from './users/report/users-report-user-form/users-report-user-form.component';
 import { UsersReportComponent } from './users/report/users-report.component';
-import { ForceDirectedGraphComponent } from '@wyn/ui-chart-cards';
+import { BubbleChartCardComponent, ForceDirectedGraphComponent, HorizontalBarChartCardComponent } from '@wyn/ui-chart-cards';
 import { UserFormComponent } from '@wyn/ui-shared';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
@@ -28,6 +28,8 @@ const routes: Route[] = [
     FlexLayoutModule,
     RouterModule.forChild(routes),
     ForceDirectedGraphComponent,
+    BubbleChartCardComponent,
+    HorizontalBarChartCardComponent,
     UserFormComponent,
   ],
 })

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormState, UserEntity } from '@wyn/ui-shared';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import * as UsersSelectors from '../../state/users.selectors';
-import * as UsersActions from '../../state/users.actions';
+import * as UsersSelectors from '../../+state/users.selectors';
+import * as UsersActions from '../../+state/users.actions';
 import { AppState } from '../../../../core/ngrx/app.state';
 
 @Component({

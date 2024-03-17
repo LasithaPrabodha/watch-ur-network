@@ -5,8 +5,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
-import { usersReducer } from './dashboard/users/state/users.reducer';
-import { UsersEffects } from './dashboard/users/state/users.effects';
+import { usersReducer } from './dashboard/users/+state/users.reducer';
+import { UsersEffects } from './dashboard/users/+state/users.effects';
 import { NotificationService } from './core/services/notification-service/notification.service';
 
 export const appConfig: ApplicationConfig = {
