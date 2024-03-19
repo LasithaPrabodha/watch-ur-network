@@ -21,10 +21,10 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, CommonMaterialModule, NgxChartsModule],
 })
 export class BubbleChartCardComponent {
-  title = input.required<string>();
-  xAxisLabel = input.required<string>();
-  yAxisLabel = input.required<string>();
-  results = input.required<BubbleChartDataPoint[]>();
+  @Input() title!: string;
+  @Input() xAxisLabel!: string;
+  @Input() yAxisLabel!: string;
+  @Input() results!: BubbleChartDataPoint[];
 
   // Options
   showXAxis = true;

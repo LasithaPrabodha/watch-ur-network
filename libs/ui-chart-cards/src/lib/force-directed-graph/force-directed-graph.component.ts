@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  Input,
   OnChanges,
   SimpleChanges,
   ViewEncapsulation,
@@ -17,7 +18,7 @@ import { ForceDirectedGraph } from '../../models/force-directed-graph.model';
 import { chartColorScheme } from '../chart-color-scheme';
 
 @Component({
-  selector: 'wyn-force-directed-graph',
+  selector: 'wyn-force-directed-graph-card',
   standalone: true,
   imports: [CommonModule, CommonMaterialModule],
   templateUrl: './force-directed-graph.component.html',
@@ -26,8 +27,8 @@ import { chartColorScheme } from '../chart-color-scheme';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ForceDirectedGraphComponent implements OnChanges {
-  friendsGraph = input.required<ForceDirectedGraph>();
-  title = input<string>(); // TODO: use this value
+  @Input() friendsGraph!: ForceDirectedGraph;
+  @Input() title!: string; // TODO: use this value
 
   isAtSimulationEnd = false;
 
@@ -43,7 +44,7 @@ export class ForceDirectedGraphComponent implements OnChanges {
       this.createSvg();
 
       const d3Graph: D3Graph = this.getD3GraphFromForceDirectedGraph(
-        this.friendsGraph()
+        this.friendsGraph
       );
       this.drawGraph(d3Graph);
     }

@@ -4,11 +4,13 @@ import { CommonMaterialModule } from '@wyn/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { ForceDirectedGraphComponent } from './force-directed-graph.component';
-import { moduleMetadata, type Meta, type StoryObj } from '@storybook/angular';
+import {
+  moduleMetadata,
+  type Meta,
+  type StoryObj,
+  argsToTemplate,
+} from '@storybook/angular';
 
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
-import { input } from '@angular/core';
 
 const mockForceDirectedGraph = {
   links: [
@@ -85,7 +87,7 @@ const mockForceDirectedGraph = {
 
 const meta: Meta<ForceDirectedGraphComponent> = {
   component: ForceDirectedGraphComponent,
-  title: 'UserFormComponent',
+  title: 'ForceDirectedGraphComponent',
   decorators: [
     moduleMetadata({
       imports: [
@@ -96,19 +98,22 @@ const meta: Meta<ForceDirectedGraphComponent> = {
       ],
     }),
   ],
-  argTypes: {
-    title: input('Friends Network'),
-    friendsGraph: object('friendsGraph', mockForceDirectedGraph),
-  },
+  render: (args: ForceDirectedGraphComponent) => ({
+    props: {
+      ...args,
+    },
+    template: `<wyn-force-directed-graph-card ${argsToTemplate(
+      args
+    )}></wyn-force-directed-graph-card>`,
+  }),
 };
 
 export default meta;
 type Story = StoryObj<ForceDirectedGraphComponent>;
 
-export const Primary: Story = {
-  args: {},
-};
-
-export const Heading: Story = {
-  args: {},
+export const Default: Story = {
+  args: {
+    title: 'Friends Network',
+    friendsGraph: object('friendsGraph', mockForceDirectedGraph),
+  },
 };

@@ -12,18 +12,22 @@ describe('BubbleChartCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BubbleChartCardComponent],
-      imports: [NoopAnimationsModule, CommonMaterialModule, NgxChartsModule],
+      imports: [
+        NoopAnimationsModule,
+        CommonMaterialModule,
+        NgxChartsModule,
+        BubbleChartCardComponent,
+      ],
     }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BubbleChartCardComponent);
     component = fixture.componentInstance;
-    component.title = input<string>('Bubble Chart Card');
-    component.xAxisLabel = input<string>('Age');
-    component.yAxisLabel = input<string>('Weight');
-    component.results = input<BubbleChartDataPoint[]>([
+    component.title = 'Bubble Chart Card';
+    component.xAxisLabel = 'Age';
+    component.yAxisLabel = 'Weight';
+    component.results = [
       {
         name: '',
         series: [
@@ -41,7 +45,7 @@ describe('BubbleChartCardComponent', () => {
           },
         ],
       },
-    ]);
+    ];
     fixture.detectChanges();
   });
 

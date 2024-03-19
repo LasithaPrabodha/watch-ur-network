@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatToolbar } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterModule, MatToolbar],
+  imports: [CommonModule, RouterModule, MatToolbar, DashboardComponent],
   selector: 'wyn-root',
   template: `
     <header>
@@ -14,7 +15,7 @@ import { CommonModule } from '@angular/common';
       </mat-toolbar>
     </header>
     <main>
-      <router-outlet></router-outlet>
+      <wyn-dashboard />
     </main>
   `,
   styles: `

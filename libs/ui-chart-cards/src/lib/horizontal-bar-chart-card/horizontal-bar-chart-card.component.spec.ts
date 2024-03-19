@@ -12,18 +12,22 @@ describe('HorizontalBarChartCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HorizontalBarChartCardComponent],
-      imports: [NoopAnimationsModule, CommonMaterialModule, NgxChartsModule],
+      imports: [
+        NoopAnimationsModule,
+        CommonMaterialModule,
+        NgxChartsModule,
+        HorizontalBarChartCardComponent,
+      ],
     }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HorizontalBarChartCardComponent);
     component = fixture.componentInstance;
-    component.title = input<string>('Horizontal Bar Chart Card');
-    component.xAxisLabel = input<string>('Age');
-    component.yAxisLabel = input<string>('Name');
-    component.results = input<HorizontalBarChartDataPoint[]>([
+    component.title = 'Horizontal Bar Chart Card';
+    component.xAxisLabel = 'Age';
+    component.yAxisLabel = 'Name';
+    component.results = [
       {
         name: 'Tammy',
         value: 10,
@@ -32,7 +36,7 @@ describe('HorizontalBarChartCardComponent', () => {
         name: 'Evan',
         value: 15,
       },
-    ]);
+    ];
     fixture.detectChanges();
   });
 

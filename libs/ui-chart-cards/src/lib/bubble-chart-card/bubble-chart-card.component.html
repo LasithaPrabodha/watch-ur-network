@@ -4,22 +4,22 @@
       <mat-card-header>
         <div class="bubble-chart-card-header-image" mat-card-avatar></div>
         <mat-card-title>
-          {{ title() }}
+          {{ title }}
         </mat-card-title>
       </mat-card-header>
 
       <mat-card-content>
         <div class="chart-container">
           <ngx-charts-bubble-chart
-            [results]="results()"
+            [results]="results"
             [legend]="showLegend"
             [xAxis]="showXAxis"
             [yAxis]="showYAxis"
             [showGridLines]="showGridLines"
             [showXAxisLabel]="showXAxisLabel"
             [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel()"
-            [yAxisLabel]="yAxisLabel()"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
           >
             <ng-template #tooltipTemplate let-model="model">
               <span class="tooltip-label">

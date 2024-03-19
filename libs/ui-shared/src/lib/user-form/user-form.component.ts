@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   OnChanges,
   OnDestroy,
   OnInit,
@@ -48,8 +49,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserFormComponent implements OnInit, OnChanges, OnDestroy {
-  allUsers = input.required<UserEntity[]>();
-  formState = input<FormState | null>(FormState.READY);
+  @Input() allUsers!: UserEntity[];
+  @Input() formState: FormState | null = FormState.READY;
 
   @Output() private readonly userSaved: EventEmitter<UserEntity> =
     new EventEmitter<UserEntity>();
@@ -76,7 +77,7 @@ export class UserFormComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.listenForFormChanges();
+    this.buildAndListenForFormChanges();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -99,8 +100,8 @@ export class UserFormComponent implements OnInit, OnChanges, OnDestroy {
 
   get isFormBusy(): boolean {
     return (
-      this.formState() === FormState.SAVING ||
-      this.formState() === FormState.LOADING
+      this.formState === FormState.SAVING ||
+      this.formState === FormState.LOADING
     );
   }
 
@@ -185,7 +186,9 @@ export class UserFormComponent implements OnInit, OnChanges, OnDestroy {
     });
   }
 
-  private listenForFormChanges(): void {
+  private buildAndListenForFormChanges(): void {
+    this.buildForm();
+
     // Listen for changes to form state
     this.formGroup.statusChanges.pipe(takeUntil(this.onDestroy$)).subscribe({
       next: this.onFormGroupStatusChanged.bind(this),
@@ -228,7 +231,7 @@ export class UserFormComponent implements OnInit, OnChanges, OnDestroy {
     if (!this.allUsers) {
       return [];
     }
-    return this.allUsers()
+    return this.allUsers
       .map((user: UserEntity) => user.name)
       .filter((userName: string) => {
         return !this.selectedFriendNames.includes(userName);
@@ -243,8 +246,6 @@ export class UserFormComponent implements OnInit, OnChanges, OnDestroy {
 
   private setFormState(): void {
     // Enable/disable form
-
-    // Enable/disable form
     if (this.formGroup) {
       if (this.isFormBusy) {
         this.formGroup.disable();
@@ -254,7 +255,7 @@ export class UserFormComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     // Reset the form if appropriate
-    if (this.formState() === FormState.SAVED) {
+    if (this.formState === FormState.SAVED) {
       this.resetForm();
     }
   }

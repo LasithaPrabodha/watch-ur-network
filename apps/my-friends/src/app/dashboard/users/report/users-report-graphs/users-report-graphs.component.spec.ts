@@ -16,10 +16,8 @@ describe('UsersReportGraphsComponent', () => {
     await TestBed.configureTestingModule({
       imports: [],
       declarations: [UsersReportGraphsComponent],
-      providers: [
-        provideMockStore({ initialState: initialUsersState })
-      ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      providers: [provideMockStore({ initialState: initialUsersState })],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
   });
 
@@ -35,22 +33,32 @@ describe('UsersReportGraphsComponent', () => {
 
   describe('ngOnInit', () => {
     it('should call initListenForUsersChange() and dispatch fetchUsersFromUserReports', () => {
-      const initListenForUsersChangeSpy = spyOn<any>(comp, 'initListenForUsersChange');
-      const dispatchSpy = spyOn(store, 'dispatch');
+      const initListenForUsersChangeSpy = jest.spyOn(
+        comp as any,
+        'initListenForUsersChange'
+      );
+      const dispatchSpy = jest.spyOn(store, 'dispatch');
 
       comp.ngOnInit();
 
       expect(initListenForUsersChangeSpy).toHaveBeenCalledWith();
-      expect(dispatchSpy).toHaveBeenCalledWith(UsersActions.fetchUsersFromUserReports());
+      expect(dispatchSpy).toHaveBeenCalledWith(
+        UsersActions.fetchUsersFromUserReports()
+      );
     });
   });
 
   describe('initListenForUsersChange', () => {
     it('should call handleUsersChange() when there is a users change', () => {
-      const handleUsersChangeSpy = spyOn<any>(comp, 'handleUsersChange');
-      const users: UserEntity[] = [{
-        name: 'Jessica', age: 37, weight: 166, friendNames: ['Jordan']
-      }];
+      const handleUsersChangeSpy = jest.spyOn(comp as any, 'handleUsersChange');
+      const users: UserEntity[] = [
+        {
+          name: 'Jessica',
+          age: 37,
+          weight: 166,
+          friendNames: ['Jordan'],
+        },
+      ];
       UsersSelectors.selectUsers.setResult(users);
 
       comp['initListenForUsersChange']();
@@ -61,25 +69,36 @@ describe('UsersReportGraphsComponent', () => {
 
   describe('handleUsersChange', () => {
     it('should convert users into results and dispatch fetchFriendsGraphFromUserReports', () => {
-      const users: UserEntity[] = [{
-        name: 'Jessica', age: 37, weight: 166, friendNames: ['Jordan']
-      }];
-      const dispatchSpy = spyOn(store, 'dispatch');
+      const users: UserEntity[] = [
+        {
+          name: 'Jessica',
+          age: 37,
+          weight: 166,
+          friendNames: ['Jordan'],
+        },
+      ];
+      const dispatchSpy = jest.spyOn(store, 'dispatch');
 
       comp['handleUsersChange'](users);
 
       expect(comp.userAgeResults).toEqual([{ name: 'Jessica', value: 37 }]);
       expect(comp.userWeightResults).toEqual([{ name: 'Jessica', value: 166 }]);
-      expect(comp.ageWeightResults).toEqual([{
-        name: 'Jessica',
-        series: [{
-          name: '',
-          x: 37,
-          y: 166,
-          r: 1
-        }]
-      }]);
-      expect(dispatchSpy).toHaveBeenCalledWith(UsersActions.fetchFriendsGraphFromUserReports());
+      expect(comp.ageWeightResults).toEqual([
+        {
+          name: 'Jessica',
+          series: [
+            {
+              name: '',
+              x: 37,
+              y: 166,
+              r: 1,
+            },
+          ],
+        },
+      ]);
+      expect(dispatchSpy).toHaveBeenCalledWith(
+        UsersActions.fetchFriendsGraphFromUserReports()
+      );
     });
   });
 
