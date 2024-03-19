@@ -13,5 +13,6 @@ export default defineConfig({
       ciWebServerCommand: 'nx run my-friends:serve-static',
     }),
     baseUrl: 'http://localhost:4200',
+    testIsolation: false
   },
 });

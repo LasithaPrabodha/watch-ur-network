@@ -5,7 +5,7 @@ export const appRoutes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    loadChildren: () =>
+    loadComponent: () =>
       import('./dashboard/dashboard.component').then(
         (m) => m.DashboardComponent
       ),

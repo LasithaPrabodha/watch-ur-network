@@ -38,9 +38,7 @@ Weight, and Friends.
 ### Running e2e tests for the app
 
 1. `npx nx run my-friends-e2e:e2e`
-2. Wait for the cypress test window to launch
-3. Click "app.spec.ts"
-4. End-to-end tests for the application will run
+2. End-to-end tests for the application will run
 
 ### Running unit tests
 

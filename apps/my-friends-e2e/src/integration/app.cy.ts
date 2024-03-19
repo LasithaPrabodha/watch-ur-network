@@ -9,7 +9,7 @@ describe('my-friends', () => {
   });
 
   describe('Valid pages', () => {
-    beforeEach(() => cy.visit('/'));
+    before(() => cy.visit('/'));
 
     it('should land on the proper url', () => {
       cy.url().should('eq', 'http://localhost:4200/');
@@ -90,6 +90,10 @@ describe('my-friends', () => {
     });
 
     it('should add second user manually and be friends with John', () => {
+      cy.get('wyn-force-directed-graph-card').should('exist');
+      cy.get('wyn-bubble-chart-card').should('exist');
+      cy.get('wyn-horizontal-bar-chart-card').should('exist');
+
       cy.get('input[formcontrolname="name"]').type('Chris');
       cy.get('input[formcontrolname="name"]').should('have.value', 'Chris');
 
