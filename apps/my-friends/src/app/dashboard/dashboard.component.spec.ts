@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
-import { CommonMaterialModule } from '@wyn/material';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UsersReportGraphsComponent } from './users/report/users-report-graphs/users-report-graphs.component';
 import { UsersReportUserFormComponent } from './users/report/users-report-user-form/users-report-user-form.component';
@@ -19,7 +18,6 @@ describe('DashboardComponent', () => {
       imports: [
         BrowserAnimationsModule,
         RouterTestingModule,
-        CommonMaterialModule,
         UserFormComponent,
       ],
       declarations: [
