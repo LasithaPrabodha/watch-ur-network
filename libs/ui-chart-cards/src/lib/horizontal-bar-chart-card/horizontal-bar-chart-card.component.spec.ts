@@ -12,8 +12,12 @@ describe('HorizontalBarChartCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HorizontalBarChartCardComponent],
-      imports: [NoopAnimationsModule, CommonMaterialModule, NgxChartsModule],
+      imports: [
+        NoopAnimationsModule,
+        CommonMaterialModule,
+        NgxChartsModule,
+        HorizontalBarChartCardComponent,
+      ],
     }).compileComponents();
   });
 

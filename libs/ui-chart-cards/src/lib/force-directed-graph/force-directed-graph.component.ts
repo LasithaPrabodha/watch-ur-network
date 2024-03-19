@@ -17,7 +17,7 @@ import { ForceDirectedGraph } from '../../models/force-directed-graph.model';
 import { chartColorScheme } from '../chart-color-scheme';
 
 @Component({
-  selector: 'wyn-force-directed-graph',
+  selector: 'wyn-force-directed-graph-card',
   standalone: true,
   imports: [CommonModule, CommonMaterialModule],
   templateUrl: './force-directed-graph.component.html',

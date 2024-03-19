@@ -44,7 +44,7 @@ describe('NotificationService', () => {
   it('should trigger snack bar toast for showSuccessToast()', inject(
     [NotificationService],
     (service: NotificationService) => {
-      const clearSessionSpy: jasmine.Spy = spyOn(mockMatSnackBar, 'open');
+      const clearSessionSpy = jest.spyOn(mockMatSnackBar, 'open');
       const message = 'message';
       expect(service.showSuccessToast(message)).toBeUndefined();
       expect(clearSessionSpy).toHaveBeenCalled();
@@ -54,7 +54,7 @@ describe('NotificationService', () => {
   it('should trigger snack bar toast for showErrorToast()', inject(
     [NotificationService],
     (service: NotificationService) => {
-      const clearSessionSpy: jasmine.Spy = spyOn(mockMatSnackBar, 'open');
+      const clearSessionSpy = jest.spyOn(mockMatSnackBar, 'open');
       const message = 'message';
       expect(service.showErrorToast(message)).toBeUndefined();
       expect(clearSessionSpy).toHaveBeenCalled();
@@ -64,7 +64,7 @@ describe('NotificationService', () => {
   it('should trigger snack bar toast for showWarningToast()', inject(
     [NotificationService],
     (service: NotificationService) => {
-      const clearSessionSpy: jasmine.Spy = spyOn(mockMatSnackBar, 'open');
+      const clearSessionSpy = jest.spyOn(mockMatSnackBar, 'open');
       const message = 'message';
       expect(service.showWarningToast(message)).toBeUndefined();
       expect(clearSessionSpy).toHaveBeenCalled();

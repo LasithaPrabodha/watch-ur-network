@@ -3,6 +3,13 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
 import { CommonMaterialModule } from '@wyn/material';
 import { RouterTestingModule } from '@angular/router/testing';
+import { UsersReportGraphsComponent } from './users/report/users-report-graphs/users-report-graphs.component';
+import { UsersReportUserFormComponent } from './users/report/users-report-user-form/users-report-user-form.component';
+import { UsersReportComponent } from './users/report/users-report.component';
+import { initialUsersState } from './users/+state/users.reducer';
+import { provideMockStore } from '@ngrx/store/testing';
+import { UserFormComponent } from '@wyn/ui-shared';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('DashboardComponent', () => {
   let comp: DashboardComponent;
@@ -11,12 +18,19 @@ describe('DashboardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
+        BrowserAnimationsModule,
         RouterTestingModule,
-        CommonMaterialModule
+        CommonMaterialModule,
+        UserFormComponent,
       ],
-      declarations: [DashboardComponent]
-    })
-      .compileComponents();
+      declarations: [
+        DashboardComponent,
+        UsersReportComponent,
+        UsersReportUserFormComponent,
+        UsersReportGraphsComponent,
+      ],
+      providers: [provideMockStore({ initialState: initialUsersState })],
+    }).compileComponents();
   });
 
   beforeEach(() => {

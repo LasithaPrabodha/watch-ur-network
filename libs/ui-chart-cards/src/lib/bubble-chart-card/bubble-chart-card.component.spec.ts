@@ -12,8 +12,7 @@ describe('BubbleChartCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BubbleChartCardComponent],
-      imports: [NoopAnimationsModule, CommonMaterialModule, NgxChartsModule],
+      imports: [NoopAnimationsModule, CommonMaterialModule, NgxChartsModule, BubbleChartCardComponent],
     }).compileComponents();
   });
 

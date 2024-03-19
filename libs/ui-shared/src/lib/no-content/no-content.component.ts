@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
   selector: 'wyn-no-content',
   standalone: true,
   imports: [CommonModule],
-  template: `<p>no-content works!</p>`,
+  template: `<h1>404: page missing</h1>`,
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
