@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { chartColorScheme } from '../chart-color-scheme';
 
@@ -21,10 +16,10 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
   imports: [CommonModule, CommonMaterialModule, NgxChartsModule],
 })
 export class HorizontalBarChartCardComponent {
-  title = input.required<string>();
-  xAxisLabel = input.required<string>();
-  yAxisLabel = input.required<string>();
-  results = input.required<HorizontalBarChartDataPoint[]>();
+  @Input() title!: string;
+  @Input() xAxisLabel!: string;
+  @Input() yAxisLabel!: string;
+  @Input() results!: HorizontalBarChartDataPoint[];
 
   // Options
   showXAxis = true;

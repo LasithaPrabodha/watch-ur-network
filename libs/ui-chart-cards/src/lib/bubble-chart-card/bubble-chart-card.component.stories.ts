@@ -1,12 +1,16 @@
-import { object } from '@storybook/addon-knobs';
 import { CommonModule } from '@angular/common';
 import { CommonMaterialModule } from '@wyn/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BubbleChartDataPoint } from './bubble-chart-data-point.model';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BubbleChartCardComponent } from './bubble-chart-card.component';
-import { input } from '@angular/core';
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
+
+import {
+  Meta,
+  StoryObj,
+  argsToTemplate,
+  moduleMetadata,
+} from '@storybook/angular';
 
 const mockBubbleChartDataPoints: BubbleChartDataPoint[] = [
   {
@@ -48,21 +52,24 @@ const meta: Meta<BubbleChartCardComponent> = {
       ],
     }),
   ],
-  argTypes: {
-    title: input('Age vs Weight (# Friends)'),
-    xAxisLabel: input('Age'),
-    yAxisLabel: input('Weight'),
-    results: object('results', mockBubbleChartDataPoints),
-  },
+  render: (args: BubbleChartCardComponent) => ({
+    props: {
+      ...args,
+    },
+    template: `<wyn-bubble-chart-card ${argsToTemplate(
+      args
+    )}></wyn-bubble-chart-card>`,
+  }),
 };
 
 export default meta;
 type Story = StoryObj<BubbleChartCardComponent>;
 
-export const Primary: Story = {
-  args: {},
-};
-
-export const Heading: Story = {
-  args: {},
+export const Default: Story = {
+  args: {
+    results: mockBubbleChartDataPoints,
+    title: 'Age vs Weight (# Friends)',
+    xAxisLabel: 'Age',
+    yAxisLabel: 'Weight',
+  },
 };

@@ -9,7 +9,7 @@
           mat-card-avatar>
         </div>
         <mat-card-title>
-          {{ title() }}
+          {{ title }}
         </mat-card-title>
       </mat-card-header>
 
@@ -18,15 +18,15 @@
         <div class="chart-container">
 
           <ngx-charts-bar-horizontal
-            [results]="results()"
+            [results]="results"
             [legend]="showLegend"
             [xAxis]="showXAxis"
             [yAxis]="showYAxis"
             [showGridLines]="showGridLines"
             [showXAxisLabel]="showXAxisLabel"
             [showYAxisLabel]="showYAxisLabel"
-            [xAxisLabel]="xAxisLabel()"
-            [yAxisLabel]="yAxisLabel()"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
             [gradient]="gradient">
           </ngx-charts-bar-horizontal>
 

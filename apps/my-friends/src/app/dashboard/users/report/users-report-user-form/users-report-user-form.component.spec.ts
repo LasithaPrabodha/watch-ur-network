@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { initialUsersState } from '../../../+state/users.reducer';
+import { initialUsersState } from '../../+state/users.reducer';
 import { UsersReportUserFormComponent } from './users-report-user-form.component';
 import { UserEntity } from '@wyn/ui-shared';
-import * as UsersActions from '../../../+state/users.actions';
+import * as UsersActions from '../../+state/users.actions';
 
 describe('UsersReportUserFormComponent', () => {
   let store: MockStore;
@@ -37,7 +37,7 @@ describe('UsersReportUserFormComponent', () => {
       const user: UserEntity = {
         name: 'Jessica', age: 37, weight: 166, friendNames: ['Jordan']
       };
-      const dispatchSpy = spyOn(store, 'dispatch');
+      const dispatchSpy = jest.spyOn(store, 'dispatch');
 
       comp.onUserSaved(user);
 

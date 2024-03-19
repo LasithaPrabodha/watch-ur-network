@@ -40,7 +40,7 @@ describe('UsersEffects', () => {
       actions$ = hot('-a-|', { a: UsersActions.fetchUsersFromUserReports() });
 
       const users: UserEntity[] = [{}] as UserEntity[];
-      spyOn(usersApiService, 'getAllUsers').and.returnValue(
+      jest.spyOn(usersApiService, 'getAllUsers').mockReturnValue(
         observableOf(users)
       );
 
@@ -55,10 +55,10 @@ describe('UsersEffects', () => {
       actions$ = hot('-a-a-|', { a: UsersActions.fetchUsersFromUserReports() });
       const users: UserEntity[] = [{}] as UserEntity[];
       const apiResponse = cold('---b-|', { b: users });
-      const getAllUsersSpy = spyOn(
+      const getAllUsersSpy = jest.spyOn(
         usersApiService,
         'getAllUsers'
-      ).and.returnValue(apiResponse);
+      ).mockReturnValue(apiResponse);
 
       const expected = hot('------r-|', {
         r: UsersActions.usersFetchedFromUserReportsSuccess({ users }),
@@ -75,7 +75,7 @@ describe('UsersEffects', () => {
       });
 
       const friendsGraph: ForceDirectedGraph = {} as ForceDirectedGraph;
-      spyOn(usersApiService, 'getFriendsGraph').and.returnValue(
+      jest.spyOn(usersApiService, 'getFriendsGraph').mockReturnValue(
         observableOf(friendsGraph)
       );
 
@@ -102,9 +102,9 @@ describe('UsersEffects', () => {
         r: UsersActions.requestAddUserFromUserReports({ user }),
       });
 
-      spyOn(usersApiService, 'addUser').and.returnValue(observableOf(user));
+      jest.spyOn(usersApiService, 'addUser').mockReturnValue(observableOf(user));
 
-      const showSuccessToastSpy = spyOn(
+      const showSuccessToastSpy = jest.spyOn(
         notificationService,
         'showSuccessToast'
       );
@@ -128,9 +128,9 @@ describe('UsersEffects', () => {
 
       const errorMessage = 'Jasmine is already a user';
       const error: Error = new Error(errorMessage);
-      spyOn(usersApiService, 'addUser').and.returnValue(throwError(error));
+      jest.spyOn(usersApiService, 'addUser').mockReturnValue(throwError(error));
 
-      const showErrorToastSpy = spyOn(notificationService, 'showErrorToast');
+      const showErrorToastSpy = jest.spyOn(notificationService, 'showErrorToast');
 
       const expected = hot('-r-|', {
         r: UsersActions.userAddedFromUserReportsFailed({ error: errorMessage }),

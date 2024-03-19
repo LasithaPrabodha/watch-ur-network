@@ -1,14 +1,15 @@
-import { object, text } from '@storybook/addon-knobs';
 import { CommonModule } from '@angular/common';
 import { CommonMaterialModule } from '@wyn/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HorizontalBarChartCardComponent } from './horizontal-bar-chart-card.component';
 import { HorizontalBarChartDataPoint } from './horizontal-bar-chart-data-point.model';
-import { Meta, StoryObj, moduleMetadata } from '@storybook/angular';
-import { within } from '@storybook/testing-library';
-import { input } from '@angular/core';
-
+import {
+  Meta,
+  StoryObj,
+  argsToTemplate,
+  moduleMetadata,
+} from '@storybook/angular';
 const mockHorizontalBarChartDataPoint: HorizontalBarChartDataPoint[] = [
   {
     name: 'Ipc',
@@ -49,21 +50,24 @@ const meta: Meta<HorizontalBarChartCardComponent> = {
       ],
     }),
   ],
-  argTypes: {
-    title: input('User Weights'),
-    xAxisLabel: input('Weight'),
-    yAxisLabel: input('Name'),
-    results: object('results', mockHorizontalBarChartDataPoint),
-  },
+  render: (args: HorizontalBarChartCardComponent) => ({
+    props: {
+      ...args,
+    },
+    template: `<wyn-horizontal-bar-chart-card ${argsToTemplate(
+      args
+    )}></wyn-horizontal-bar-chart-card>`,
+  }),
 };
 
 export default meta;
 type Story = StoryObj<HorizontalBarChartCardComponent>;
 
-export const Primary: Story = {
-  args: {},
-};
-
-export const Heading: Story = {
-  args: {},
+export const Default: Story = {
+  args: {
+    title: 'User Weights',
+    xAxisLabel: 'Weight',
+    yAxisLabel: 'Name',
+    results: mockHorizontalBarChartDataPoint,
+  },
 };

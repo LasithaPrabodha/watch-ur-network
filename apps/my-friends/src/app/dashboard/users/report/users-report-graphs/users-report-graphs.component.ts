@@ -1,7 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
+  BubbleChartCardComponent,
   BubbleChartDataPoint,
   ForceDirectedGraph,
+  ForceDirectedGraphComponent,
+  HorizontalBarChartCardComponent,
   HorizontalBarChartDataPoint,
 } from '@wyn/ui-chart-cards';
 import { takeUntil } from 'rxjs/operators';
@@ -11,11 +14,20 @@ import { select, Store } from '@ngrx/store';
 import * as UsersActions from '../../+state/users.actions';
 import * as UsersSelectors from '../../+state/users.selectors';
 import { AppState } from '../../../../core/ngrx/app.state';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
+  standalone: true,
   selector: 'wyn-users-report-graphs',
   templateUrl: './users-report-graphs.component.html',
   styleUrls: ['./users-report-graphs.component.scss'],
+  imports: [
+    NgIf,
+    AsyncPipe,
+    ForceDirectedGraphComponent,
+    BubbleChartCardComponent,
+    HorizontalBarChartCardComponent,
+  ],
 })
 export class UsersReportGraphsComponent implements OnInit, OnDestroy {
   friendsGraph$: Observable<ForceDirectedGraph>;
