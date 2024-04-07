@@ -25,6 +25,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
     main {
       padding: 5px 15px;
+      max-width: 900px;
+      margin: 0 auto;
     }
 `,
 })

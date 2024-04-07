@@ -23,32 +23,33 @@
           />
         </mat-form-field>
 
-        <!-- Age -->
-        <mat-form-field color="accent">
-          <mat-label>Age</mat-label>
-          <input
-            matInput
-            formControlName="age"
-            maxlength="3"
-            placeholder="Age"
-            aria-label="Age"
-          />
-          <span matSuffix> years old </span>
-        </mat-form-field>
+        <div fxLayout="row wrap" fxLayoutGap="16px">
+          <!-- Age -->
+          <mat-form-field color="accent" fxFlex>
+            <mat-label>Age</mat-label>
+            <input
+              matInput
+              formControlName="age"
+              maxlength="3"
+              placeholder="Age"
+              aria-label="Age"
+            />
+            <span matSuffix> years old </span>
+          </mat-form-field>
 
-        <!-- Weight -->
-        <mat-form-field color="accent">
-          <mat-label>Weight</mat-label>
-          <input
-            matInput
-            formControlName="weight"
-            maxlength="3"
-            placeholder="Weight"
-            aria-label="Weight"
-          />
-          <span matSuffix> lbs </span>
-        </mat-form-field>
-
+          <!-- Weight -->
+          <mat-form-field color="accent" fxFlex>
+            <mat-label>Weight</mat-label>
+            <input
+              matInput
+              formControlName="weight"
+              maxlength="3"
+              placeholder="Weight"
+              aria-label="Weight"
+            />
+            <span matSuffix> lbs </span>
+          </mat-form-field>
+        </div>
         <!-- Friends -->
         <mat-form-field color="accent">
           <mat-label>Friends</mat-label>

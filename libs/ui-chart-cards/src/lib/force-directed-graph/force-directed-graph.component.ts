@@ -7,7 +7,6 @@ import {
   SimpleChanges,
   ViewEncapsulation,
   inject,
-  input,
 } from '@angular/core';
 import * as D3 from 'd3';
 import { D3GraphDataGenerator } from './d3-graph-data-generator';
@@ -23,7 +22,6 @@ import { chartColorScheme } from '../chart-color-scheme';
   imports: [CommonModule, CommonMaterialModule],
   templateUrl: './force-directed-graph.component.html',
   styleUrl: './force-directed-graph.component.scss',
-  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ForceDirectedGraphComponent implements OnChanges {
